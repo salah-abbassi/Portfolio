@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Experience - Portfolio</title>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">SALAH</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="skills.html">Skills</a>
+            <a href="education.html">Education</a>
+            <a href="experience.html" class="active">Experience</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </div>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+
+    <section class="experience-page">
+        <h2 class="heading">My <span>Projects</span></h2>
+        <div class="experience-container">
+            <div class="experience-box">
+                <div class="experience-content">
+                    <div class="content">
+                        <div class="year"><i class="fas fa-calendar"></i> Mai - 2025</div>
+                        <h3>Construction d'une Application de Gestion d'une Bibliothèque</h3>
+                        <p>Réalisation d'une application web de gestion de bibliothèque : modélisation UML, création de la base de données, développement du backend avec Django et du frontend avec React.</p>
+                    </div>
+                </div>
+                <div class="experience-content">
+                    <div class="content">
+                        <div class="year"><i class="fas fa-calendar"></i> Janvier - 2025</div>
+                        <h3>Construction d'une Application de Management Bancaire</h3>
+                        <p>Développement d'une application Java en POO avec interface graphique (GUI) et stockage des données en base de données.</p>
+                    </div>
+                </div>
+                <div class="experience-content">
+                    <div class="content">
+                        <div class="year"><i class="fas fa-calendar"></i> Juillet - Décembre 2024</div>
+                        <h3>Projet S1: Analyse des Données d'un CHU</h3>
+                        <p>Traitement et visualisation de données avec Power BI: nettoyage, ajout d'instances via DAX, création de dashboards interactifs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-theme');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            const isLight = body.classList.contains('light-theme');
+            
+            // Update icon
+            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            
+            // Save preference
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        });
+
+        // Menu Toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const nav = document.querySelector('nav');
+        
+        menuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            menuBtn.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !menuBtn.contains(e.target) && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                menuBtn.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                menuBtn.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Update active class on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

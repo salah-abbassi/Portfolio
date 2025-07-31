@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouveau Message de Contact</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 300;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .message-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .info-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        .info-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .info-item span {
+            color: #495057;
+            font-size: 16px;
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+        }
+        .footer p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                border-radius: 8px;
+            }
+            .content {
+                padding: 20px;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .header {
+                padding: 20px;
+            }
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📧 Nouveau Message</h1>
+            <p>Vous avez reçu un nouveau message de contact</p>
+            <div class="badge">Portfolio Contact</div>
+        </div>
+        
+        <div class="content">
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>Nom</strong>
+                    <span>{{from_name}}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Email</strong>
+                    <span>{{from_email}}</span>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <strong>Sujet</strong>
+                <span>{{subject}}</span>
+            </div>
+            
+            <div class="message-box">
+                <strong style="color: #667eea; display: block; margin-bottom: 10px;">Message :</strong>
+                <p style="margin: 0; white-space: pre-wrap;">{{message}}</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="color: #6c757d; font-size: 14px; margin: 0;">
+                    <strong>Heure de réception :</strong> {{date}}
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Ce message a été envoyé depuis le formulaire de contact de votre portfolio</p>
+            <p style="margin-top: 10px;">
+                <strong>SALAH EDDINE ABBASSI</strong><br>
+                Développeur Web Full Stack
+            </p>
+        </div>
+    </div>
+</body>
+</html> 
