@@ -378,6 +378,12 @@ body.ready .split .char { animation: charIn .9s cubic-bezier(.2,.9,.2,1) forward
     #contact-form .row { grid-template-columns: 1fr; }
     .footer { flex-direction: column; text-align: center; }
     .scroll-hint { display: none; }
+    /* phones: backdrop blur and the animated grain cost a lot of GPU while scrolling */
+    :root, html.light { --card: color-mix(in srgb, var(--bg-2) 82%, transparent); }
+    *, *::before, *::after { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+    .header { background: color-mix(in srgb, var(--bg) 92%, transparent); }
+    .grain { display: none; }
+    .about-meta { grid-template-columns: 1fr; }
     .hero-role { min-height: 2.6em; } /* long roles wrap to 2 lines on phones; avoid layout jump */
 }
 

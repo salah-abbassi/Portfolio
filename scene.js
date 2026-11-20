@@ -1,10 +1,10 @@
 // 3D background: ~14k particles that morph sphere -> torus knot -> data wave as you scroll.
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js';
 
 const canvas = document.getElementById('bg3d');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const mobile = innerWidth < 768;
-const N = mobile ? 6000 : 14000;
+const N = mobile ? 2500 : 14000;
 
 let renderer;
 try {
@@ -13,7 +13,7 @@ try {
     canvas.remove(); // no WebGL: the page works without the background
     throw e;
 }
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setPixelRatio(Math.min(devicePixelRatio, mobile ? 1.25 : 2));
 renderer.setSize(innerWidth, innerHeight);
 
 const scene = new THREE.Scene();

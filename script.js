@@ -10,7 +10,7 @@ const profileImg = $('.profile-img');
 function applyTheme() {
     const light = root.classList.contains('light');
     themeBtn.innerHTML = `<i class="fas fa-${light ? 'sun' : 'moon'}"></i>`;
-    profileImg.src = light ? './main-light.jpg' : './main.jpg';
+    profileImg.src = light ? './main-light.webp' : './main.webp';
     window.dispatchEvent(new Event('themechange'));
 }
 themeBtn.addEventListener('click', () => {
@@ -76,7 +76,7 @@ const tick = setInterval(() => {
         clearInterval(tick);
         setTimeout(() => { loader.classList.add('done'); document.body.classList.add('ready'); }, 250);
     }
-}, reduced ? 1 : 35);
+}, reduced ? 1 : 18);
 
 /* ---------- Typing ---------- */
 const roles = ['Business Intelligence & Analytics', 'Machine Learning & Séries Temporelles', 'Agents IA & Systèmes Multi-Agents', 'Data Engineering · ETL · Power BI'];
@@ -98,8 +98,7 @@ const navLinks = $$('.nav a');
 let lastY = 0;
 addEventListener('scroll', () => {
     const y = scrollY;
-    header.classList.toggle('hide', y > lastY && y > 200);
-    lastY = y;
+    if (finePointer && Math.abs(y - lastY) > 8) { header.classList.toggle('hide', y > lastY && y > 200); lastY = y; }
     progress.style.transform = `scaleX(${y / (document.documentElement.scrollHeight - innerHeight || 1)})`;
 }, { passive: true });
 
@@ -218,7 +217,7 @@ sphere.appendChild(stage);
 const cloud = $('.globe-cloud', stage), cx2d = cloud.getContext('2d');
 const fib = (i, n) => { const phi = Math.acos(1 - 2 * (i + 0.5) / n), th = Math.PI * (1 + Math.sqrt(5)) * i; return [Math.sin(phi) * Math.cos(th), Math.sin(phi) * Math.sin(th), Math.cos(phi)]; };
 // point cloud: fuzzy shell around the sphere
-const PTS = innerWidth < 768 ? 800 : 1600;
+const PTS = innerWidth < 768 ? 350 : 1600;
 const pts = Array.from({ length: PTS }, (_, i) => { const r = 0.75 + Math.random() * 0.4; return { b: fib(i, PTS).map(v => v * r), c: Math.random() < 0.6 ? 0 : 1, s: 0.8 + Math.random() * 1.4, f: 0.4 + Math.random() * 1.6, ph: Math.random() * 6.283 }; });
 const tags = skills.map(([name, icon], i) => {
     const el = document.createElement('span');
