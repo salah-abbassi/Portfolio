@@ -1,214 +1,362 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="./main-light.jpg" type="image/jpg">
+    <meta name="description" content="Salah Eddine Abbassi — Élève-ingénieur Business Intelligence & Analytics à l'ENSIAS. Data, Machine Learning, IA générative et systèmes multi-agents.">
     <title>Salah Eddine Abbassi | Portfolio</title>
+    <link rel="icon" href="./main.jpg" type="image/jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>document.documentElement.classList.add('js'); try { if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light'); } catch (e) {}</script>
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo">SALAH</a>
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="services.html">Services</a>
-            <a href="skills.html">Skills</a>
-            <a href="education.html">Education</a>
-            <a href="experience.html">Experience</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-        <div class="theme-toggle">
-            <i class="fas fa-moon"></i>
+    <!-- Loader -->
+    <div class="loader" aria-hidden="true">
+        <div class="loader-inner">
+            <span class="loader-count">0</span><span class="loader-pct">%</span>
+            <div class="loader-bar"><i></i></div>
+            <p class="loader-txt">initialisation du réseau neuronal…</p>
         </div>
-        <div class="menu-btn">
-            <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- 3D background -->
+    <canvas id="bg3d" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <div class="progress" aria-hidden="true"></div>
+
+    <header class="header">
+        <a href="#home" class="logo">SA<span>.</span></a>
+        <nav class="nav" id="nav">
+            <a href="#about">Profil</a>
+            <a href="#experience">Expériences</a>
+            <a href="#projects">Projets</a>
+            <a href="#skills">Compétences</a>
+            <a href="#education">Formation</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <button class="icon-btn theme-toggle" aria-label="Changer de thème"><i class="fas fa-moon"></i></button>
+            <button class="icon-btn menu-btn" aria-label="Menu" aria-controls="nav" aria-expanded="false"><i class="fas fa-bars"></i></button>
         </div>
     </header>
 
-    <section class="home">
-        <div class="home-img">
-            <img src="./main.jpg" alt="Salah Eddine Abbassi" loading="eager" class="profile-img">
-            <div class="glow"></div>
-        </div>
-        <div class="home-content">
-            <h1>Hi, I'm <span>Salah eddine Abbassi</span></h1>
-            <h3 class="typing-text">I'm a <span></span></h3>
-            <p>Étudiant en 2ème année à l'ENSIAS, filière Business Intelligence & Analytics. À la recherche d'un stage PFA pour mettre en pratique mes compétences en analyse de données, machine learning et outils BI. Passionné par l'IA générative et les systèmes multi-agents.</p>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/salah-eddine-abbassi-5a2ab0249/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/salah-abbassi" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="https://x.com/AbbassiEdd93873" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com/salahabbassi04/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://web.facebook.com/salah.abbassi.9279" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="badge">
+                    <span class="pulse" aria-hidden="true"></span>
+                    <span class="badge-txt"><small>Disponible · Open to work</small><b>Stage PFE <em>4 à 6 mois</em></b></span>
+                    <span class="badge-date"><i class="fas fa-calendar-days" aria-hidden="true"></i> Fév. 2027</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="line split">Salah Eddine</span>
+                    <span class="line split gradient-text">Abbassi</span>
+                </h1>
+                <p class="hero-role">&gt; <span class="typed"></span><span class="caret">_</span></p>
+                <p class="hero-desc">Élève-ingénieur en 3ème année à l'<strong>ENSIAS</strong> — Business Intelligence &amp; Analytics. Je transforme la donnée en décisions grâce au Machine Learning, à la BI et aux agents IA.</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary" data-magnetic><span>Me contacter</span> <i class="fas fa-arrow-right"></i></a>
+                    <a href="assets/CV_SALAH_EDDINE_ABBASSI.pdf" class="btn btn-ghost" target="_blank" rel="noopener" data-magnetic><span>Voir le CV</span> <i class="fas fa-file-arrow-down"></i></a>
+                </div>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/salah-eddine-abbassi-5a2ab0249/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/salah-abbassi" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://x.com/AbbassiEdd93873" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/salahabbassi04/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
             </div>
-            <div class="home-buttons">
-                <a href="contact.html" class="btn">Hire Me <i class="fas fa-arrow-right"></i></a>
-                <a href="assets/CV_SALAH_EDDINE_ABBASSI.pdf" class="btn" target="_blank">View CV <i class="fas fa-file-pdf"></i></a>
+
+            <div class="hero-visual">
+                <div class="portrait" data-tilt>
+                    <div class="orbit" aria-hidden="true"></div>
+                    <div class="orbit orbit-2" aria-hidden="true"></div>
+                    <div class="frame">
+                        <img src="./main.jpg" alt="Salah Eddine Abbassi" class="profile-img">
+                        <div class="scan" aria-hidden="true"></div>
+                        <div class="glare"></div>
+                    </div>
+                    <span class="hud hud-tl" aria-hidden="true"></span><span class="hud hud-tr" aria-hidden="true"></span>
+                    <span class="hud hud-bl" aria-hidden="true"></span><span class="hud hud-br" aria-hidden="true"></span>
+                    <div class="hud-tag" aria-hidden="true"><b>SALAH</b> // BI &amp; ANALYTICS</div>
+                    <div class="chip chip-1"><i class="fas fa-brain"></i> Agents IA</div>
+                    <div class="chip chip-2"><i class="fas fa-chart-pie"></i> Power BI</div>
+                    <div class="chip chip-3"><i class="fas fa-chart-simple"></i> Statistics</div>
+                </div>
+            </div>
+
+            <a href="#about" class="scroll-hint" aria-label="Défiler vers le bas"><span></span></a>
+        </section>
+
+        <!-- MARQUEE -->
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span>Machine Learning</span><b>✦</b><span>Business Intelligence</span><b>✦</b><span>LangGraph</span><b>✦</b><span>Power BI</span><b>✦</b><span>Séries Temporelles</span><b>✦</b><span>Agents IA</span><b>✦</b><span>PySpark</span><b>✦</b><span>Django · React</span><b>✦</b>
+                <span>Machine Learning</span><b>✦</b><span>Business Intelligence</span><b>✦</b><span>LangGraph</span><b>✦</b><span>Power BI</span><b>✦</b><span>Séries Temporelles</span><b>✦</b><span>Agents IA</span><b>✦</b><span>PySpark</span><b>✦</b><span>Django · React</span><b>✦</b>
             </div>
         </div>
-    </section>
 
-    <script>
-        // Theme Toggle
-        const themeToggle = document.querySelector('.theme-toggle');
-        const body = document.body;
-        const profileImg = document.querySelector('.profile-img');
-        
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            body.classList.add('light-theme');
-            profileImg.src = './main-light.jpg';
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('light-theme');
-            const isLight = body.classList.contains('light-theme');
-            
-            // Change image based on theme
-            profileImg.src = isLight ? './main-light.jpg' : './main.jpg';
-            
-            // Update icon
-            themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            
-            // Save preference
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        });
+        <!-- ABOUT -->
+        <section class="section" id="about">
+            <div class="section-head reveal">
+                <span class="index">01</span>
+                <h2 class="scramble">Profil</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p class="lead">Passionné par l'<em>IA générative</em> et les <em>systèmes multi-agents</em>, je conçois des solutions data de bout en bout&nbsp;: pipelines ETL, modèles prédictifs et tableaux de bord qui parlent aux métiers.</p>
+                    <p>Élève-ingénieur à l'ENSIAS (filière Business Intelligence &amp; Analytics), je recherche un <strong>stage de Projet de Fin d'Études de 4 à 6 mois à partir de février 2027</strong> pour m'investir dans un projet innovant au sein d'une équipe dynamique.</p>
+                    <ul class="about-meta">
+                        <li class="meta"><i class="fas fa-location-dot"></i><div><small>Localisation</small><b>Rabat, Al Irfan</b></div></li>
+                        <li class="meta"><i class="fas fa-graduation-cap"></i><div><small>École</small><b>ENSIAS · 3ème année</b></div></li>
+                        <li class="meta meta-wide"><i class="fas fa-language"></i><div><small>Langues</small>
+                            <span class="langs"><span><abbr title="Arabe">AR</abbr> Natif</span><span><abbr title="Français">FR</abbr> B2</span><span><abbr title="Anglais">EN</abbr> B2</span></span></div></li>
+                    </ul>
+                </div>
+                <div class="stats">
+                    <div class="stat card reveal" data-tilt><strong data-count="2">0</strong><span>Stages en entreprise</span></div>
+                    <div class="stat card reveal" data-tilt><strong data-count="3">0</strong><span>Projets académiques</span></div>
+                    <div class="stat card reveal" data-tilt><strong data-count="3">0</strong><span>Certifications</span></div>
+                    <div class="stat card reveal" data-tilt><strong data-count="20" data-suffix="+">0</strong><span>Technologies</span></div>
+                </div>
+            </div>
+        </section>
 
-        // Menu Toggle
-        const menuBtn = document.querySelector('.menu-btn');
-        const nav = document.querySelector('nav');
-        let lastScroll = 0;
-        
-        menuBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            menuBtn.classList.toggle('active');
-            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-        });
+        <!-- EXPERIENCE -->
+        <section class="section" id="experience">
+            <div class="section-head reveal">
+                <span class="index">02</span>
+                <h2 class="scramble">Expériences</h2>
+            </div>
+            <div class="timeline">
+                <article class="tl-item reveal">
+                    <div class="tl-dot"></div>
+                    <div class="card tl-card" data-tilt>
+                        <div class="tl-top">
+                            <span class="tl-date">Juil. – Août 2026</span>
+                            <span class="tl-place"><i class="fas fa-location-dot"></i> Casablanca</span>
+                        </div>
+                        <h3>Cash Management par Machine Learning</h3>
+                        <p class="tl-org">Stage PFA · <strong>Atm-View</strong></p>
+                        <ul>
+                            <li>Solution prédictive de Cash Management pour optimiser l'approvisionnement en liquidités des GABs.</li>
+                            <li>Implémentation et adaptation du modèle de fondation <strong>Google TimesFM</strong> pour prévoir les flux de retraits quotidiens.</li>
+                            <li>Interface interactive de simulation de scénarios pour anticiper les risques de rupture de cash.</li>
+                        </ul>
+                        <div class="tags"><span>TimesFM</span><span>Séries temporelles</span><span>Python</span><span>Simulation</span></div>
+                    </div>
+                </article>
+                <article class="tl-item reveal">
+                    <div class="tl-dot"></div>
+                    <div class="card tl-card" data-tilt>
+                        <div class="tl-top">
+                            <span class="tl-date">Juil. – Août 2025</span>
+                            <span class="tl-place"><i class="fas fa-location-dot"></i> Rabat</span>
+                        </div>
+                        <h3>Business Intelligence &amp; Data Analytics</h3>
+                        <p class="tl-org">Stage · <strong>Barid Al Maghrib</strong></p>
+                        <ul>
+                            <li>Pipeline de données complet (<strong>ETL</strong>) pour la détection d'anomalies opérationnelles.</li>
+                            <li><strong>API Python</strong> de simulation de données en streaming et traitement des données SolarWinds.</li>
+                            <li>Tableaux de bord interactifs <strong>Power BI (DAX)</strong> pour le suivi des KPI métiers.</li>
+                        </ul>
+                        <div class="tags"><span>ETL</span><span>Power BI</span><span>DAX</span><span>API Python</span><span>Streaming</span></div>
+                    </div>
+                </article>
+            </div>
+        </section>
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!nav.contains(e.target) && !menuBtn.contains(e.target) && nav.classList.contains('active')) {
-                nav.classList.remove('active');
-                menuBtn.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
+        <!-- PROJECTS -->
+        <section class="section" id="projects">
+            <div class="section-head reveal">
+                <span class="index">03</span>
+                <h2 class="scramble">Projets</h2>
+            </div>
+            <div class="projects">
+                <article class="project card reveal" data-tilt>
+                    <div class="project-num">01</div>
+                    <div class="project-icon"><i class="fas fa-robot"></i></div>
+                    <span class="project-date">PFA 2ème année · Mai 2025</span>
+                    <h3>Génération automatisée de Dashboards par IA</h3>
+                    <p>Système intelligent qui génère des tableaux de bord de façon autonome grâce à des agents IA orchestrés avec LangGraph&nbsp;: extraction, analyse des requêtes utilisateur et choix des visualisations pertinentes.</p>
+                    <div class="tags"><span>LangGraph</span><span>Agents IA</span><span>LLM</span><span>Data Viz</span></div>
+                    <div class="glare"></div>
+                </article>
+                <article class="project card reveal" data-tilt>
+                    <div class="project-num">02</div>
+                    <div class="project-icon"><i class="fas fa-book-open"></i></div>
+                    <span class="project-date">PFA 1ère année · Mai 2025</span>
+                    <h3>Application de gestion de bibliothèque</h3>
+                    <p>Application web complète&nbsp;: analyse des besoins, modélisation UML, base de données relationnelle, backend Django et frontend dynamique React.</p>
+                    <div class="tags"><span>Django</span><span>React</span><span>UML</span><span>SQL</span></div>
+                    <div class="glare"></div>
+                </article>
+                <article class="project card reveal" data-tilt>
+                    <div class="project-num">03</div>
+                    <div class="project-icon"><i class="fas fa-hospital"></i></div>
+                    <span class="project-date">Projet S1 · Déc. 2024</span>
+                    <h3>Analyse des données d'un CHU</h3>
+                    <p>Traitement et visualisation de données hospitalières&nbsp;: nettoyage, modélisation analytique, mesures DAX et dashboards interactifs pour le pilotage des indicateurs clés.</p>
+                    <div class="tags"><span>Power BI</span><span>DAX</span><span>Modélisation</span></div>
+                    <div class="glare"></div>
+                </article>
+            </div>
+        </section>
 
-        // Close menu when clicking a link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                menuBtn.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
+        <!-- SKILLS -->
+        <section class="section" id="skills">
+            <div class="section-head reveal">
+                <span class="index">04</span>
+                <h2 class="scramble">Compétences</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="tag-sphere reveal" aria-hidden="true"></div>
+                <div class="skill-cats">
+                    <div class="card skill-cat reveal" data-tilt>
+                        <h3><i class="fas fa-brain"></i> Data Science &amp; IA</h3>
+                        <div class="sk-grid">
+                            <div class="sk"><i class="fas fa-brain"></i><b>Machine Learning</b><small>Régression · Classification</small></div>
+                            <div class="sk"><i class="fas fa-circle-nodes"></i><b>Deep Learning</b><small>Réseaux de neurones</small></div>
+                            <div class="sk"><i class="devicon-pytorch-plain"></i><b>PyTorch</b><small>Framework DL</small></div>
+                            <div class="sk"><i class="devicon-scikitlearn-plain"></i><b>Scikit-Learn</b><small>Modèles ML</small></div>
+                            <div class="sk"><i class="fas fa-language"></i><b>NLP · SpaCy</b><small>Traitement du langage</small></div>
+                            <div class="sk"><i class="fas fa-chart-line"></i><b>Google TimesFM</b><small>Séries temporelles</small></div>
+                            <div class="sk"><i class="fas fa-diagram-project"></i><b>LangGraph</b><small>Orchestration d'agents</small></div>
+                            <div class="sk"><i class="fas fa-robot"></i><b>Agents IA</b><small>Systèmes multi-agents</small></div>
+                            <div class="sk"><i class="fas fa-chart-pie"></i><b>Data Visualisation</b><small>Storytelling data</small></div>
+                            <div class="sk"><i class="fas fa-warehouse"></i><b>Data Warehousing</b><small>Modélisation en étoile</small></div>
+                        </div>
+                    </div>
+                    <div class="card skill-cat reveal" data-tilt>
+                        <h3><i class="fas fa-database"></i> Big Data &amp; BI</h3>
+                        <div class="sk-grid">
+                            <div class="sk"><i class="fas fa-chart-column"></i><b>Power BI</b><small>Dashboards &amp; KPI</small></div>
+                            <div class="sk"><i class="fas fa-square-root-variable"></i><b>DAX</b><small>Mesures &amp; calculs</small></div>
+                            <div class="sk"><i class="fas fa-shuffle"></i><b>ETL · SSIS</b><small>Intégration de données</small></div>
+                            <div class="sk"><i class="devicon-apachespark-plain"></i><b>Spark · PySpark</b><small>Calcul distribué</small></div>
+                            <div class="sk"><i class="devicon-hadoop-plain"></i><b>Hadoop · HDFS</b><small>Stockage distribué</small></div>
+                            <div class="sk"><i class="fas fa-layer-group"></i><b>Databricks</b><small>Lakehouse</small></div>
+                        </div>
+                    </div>
+                    <div class="card skill-cat reveal" data-tilt>
+                        <h3><i class="fas fa-code"></i> Programmation &amp; Web</h3>
+                        <div class="sk-grid">
+                            <div class="sk"><i class="devicon-python-plain"></i><b>Python</b><small>Langage principal</small></div>
+                            <div class="sk"><i class="fas fa-database"></i><b>SQL</b><small>Requêtes &amp; modèles</small></div>
+                            <div class="sk"><i class="devicon-django-plain"></i><b>Django</b><small>Backend web</small></div>
+                            <div class="sk"><i class="devicon-react-original"></i><b>React</b><small>Frontend web</small></div>
+                            <div class="sk"><i class="fas fa-sitemap"></i><b>UML</b><small>Conception</small></div>
+                            <div class="sk"><i class="devicon-git-plain"></i><b>Git · GitHub</b><small>Versioning</small></div>
+                            <div class="sk"><i class="devicon-docker-plain"></i><b>Docker</b><small>Conteneurs</small></div>
+                            <div class="sk"><i class="fas fa-gears"></i><b>n8n</b><small>Automatisation</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        // Hide/Show header on scroll
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            const header = document.querySelector('header');
-            
-            if (currentScroll <= 0) {
-                header.classList.remove('scroll-up');
-                return;
-            }
-            
-            if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
-                // Scroll Down
-                header.classList.remove('scroll-up');
-                header.classList.add('scroll-down');
-            } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
-                // Scroll Up
-                header.classList.remove('scroll-down');
-                header.classList.add('scroll-up');
-            }
-            lastScroll = currentScroll;
-        });
+        <!-- EDUCATION + CERTS -->
+        <section class="section" id="education">
+            <div class="section-head reveal">
+                <span class="index">05</span>
+                <h2 class="scramble">Formation</h2>
+            </div>
+            <div class="edu-grid">
+                <div class="edu-list">
+                    <div class="card edu reveal" data-tilt>
+                        <span class="edu-year">2024 — 2027</span>
+                        <div>
+                            <h3>ENSIAS — École Nationale Supérieure d'Informatique et d'Analyse des Systèmes</h3>
+                            <p>Cycle d'Ingénieur d'État en Business Intelligence &amp; Analytics · Rabat</p>
+                        </div>
+                    </div>
+                    <div class="card edu reveal" data-tilt>
+                        <span class="edu-year">2022 — 2024</span>
+                        <div>
+                            <h3>Classes Préparatoires aux Grandes Écoles — MPSI</h3>
+                            <p>Lycée Mohammed V · Béni Mellal</p>
+                        </div>
+                    </div>
+                    <div class="card edu reveal" data-tilt>
+                        <span class="edu-year">2021 — 2022</span>
+                        <div>
+                            <h3>Baccalauréat Sciences Mathématiques B</h3>
+                            <p>Lycée Mohammed V · Béni Mellal</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="certs reveal">
+                    <h3 class="sub">Certifications</h3>
+                    <div class="cert"><i class="fas fa-award"></i><div><strong>Apprentissage automatique supervisé : Régression et classification</strong><span>DeepLearning.AI</span></div></div>
+                    <div class="cert"><i class="fas fa-award"></i><div><strong>Introduction to Natural Language Processing in Python</strong><span>DataCamp</span></div></div>
+                    <div class="cert"><i class="fas fa-award"></i><div><strong>Python Essentials</strong><span>Cisco Networking Academy</span></div></div>
+                    <h3 class="sub">Savoir-être</h3>
+                    <div class="sk-grid">
+                        <div class="sk"><i class="fas fa-hourglass-half"></i><b>Gestion du temps</b><small>Priorités &amp; deadlines</small></div>
+                        <div class="sk"><i class="fas fa-people-group"></i><b>Esprit d'équipe</b><small>Collaboration</small></div>
+                        <div class="sk"><i class="fas fa-battery-full"></i><b>Endurance</b><small>Projets exigeants</small></div>
+                        <div class="sk"><i class="fas fa-seedling"></i><b>Patience</b><small>Itérer jusqu'au résultat</small></div>
+                    </div>
+                    <h3 class="sub">Centres d'intérêt</h3>
+                    <div class="sk-grid">
+                        <div class="sk"><i class="fas fa-satellite-dish"></i><b>Veille techno</b><small>IA &amp; data</small></div>
+                        <div class="sk"><i class="fas fa-film"></i><b>Montage vidéo</b><small>Création de contenu</small></div>
+                        <div class="sk"><i class="fas fa-futbol"></i><b>Football</b><small>Jeu collectif</small></div>
+                        <div class="sk"><i class="fas fa-dumbbell"></i><b>Callisthénie</b><small>Discipline</small></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        // Typing Animation
-        const typingText = document.querySelector('.typing-text span');
-        const words = ['Business Intelligence & Analytics Student', 'AI & Multi-Agents Enthusiast', 'Data Analyst', 'Student at ENSIAS'];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingDelay = 200;
+        <!-- CONTACT -->
+        <section class="section" id="contact">
+            <div class="section-head reveal">
+                <span class="index">06</span>
+                <h2 class="scramble">Contact</h2>
+            </div>
+            <p class="contact-big reveal">Un projet de PFE innovant&nbsp;? <span class="gradient-text">Parlons-en.</span></p>
+            <div class="contact-grid">
+                <form id="contact-form" class="card reveal" novalidate>
+                    <div class="row">
+                        <label><span>Nom complet</span><input type="text" name="fullName" required autocomplete="name"></label>
+                        <label><span>Email</span><input type="email" name="email" required autocomplete="email"></label>
+                    </div>
+                    <label><span>Sujet</span><input type="text" name="subject" required></label>
+                    <label><span>Message</span><textarea name="message" rows="6" required></textarea></label>
+                    <button type="submit" class="btn btn-primary" id="send-btn" data-magnetic>
+                        <span class="btn-text">Envoyer le message</span>
+                        <span class="btn-loading" hidden><i class="fas fa-spinner fa-spin"></i> Envoi…</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <p class="form-status" role="status" aria-live="polite"></p>
+                </form>
+                <div class="contact-info">
+                    <a class="card info reveal" href="mailto:salaheddine_abbassi@um5.ac.ma" data-tilt><i class="fas fa-envelope"></i><div><span>Email</span><strong>salaheddine_abbassi@um5.ac.ma</strong></div></a>
+                    <a class="card info reveal" href="tel:+212655345985" data-tilt><i class="fas fa-phone"></i><div><span>Téléphone</span><strong>+212 655 345 985</strong></div></a>
+                    <a class="card info reveal" href="https://www.linkedin.com/in/salah-eddine-abbassi-5a2ab0249/" target="_blank" rel="noopener" data-tilt><i class="fa-brands fa-linkedin-in"></i><div><span>LinkedIn</span><strong>salah-eddine-abbassi</strong></div></a>
+                    <a class="card info reveal" href="https://github.com/salah-abbassi" target="_blank" rel="noopener" data-tilt><i class="fa-brands fa-github"></i><div><span>GitHub</span><strong>salah-abbassi</strong></div></a>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        function type() {
-            const currentWord = words[wordIndex];
-            
-            if (isDeleting) {
-                typingText.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-                typingDelay = 100;
-            } else {
-                typingText.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-                typingDelay = 200;
-            }
+    <footer class="footer">
+        <p>© 2026 Salah Eddine Abbassi · Conçu &amp; développé avec <i class="fas fa-heart"></i> à Rabat</p>
+        <a href="#home" class="to-top" aria-label="Retour en haut"><i class="fas fa-arrow-up"></i></a>
+    </footer>
 
-            if (!isDeleting && charIndex === currentWord.length) {
-                isDeleting = true;
-                typingDelay = 2000;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                typingDelay = 500;
-            }
-
-            setTimeout(type, typingDelay);
-        }
-
-        // Start typing animation
-        type();
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Active navigation on scroll
-        window.addEventListener('scroll', () => {
-            let sections = document.querySelectorAll('section');
-            let navLinks = document.querySelectorAll('nav a');
-            
-            sections.forEach(section => {
-                let top = section.offsetTop - 100;
-                let bottom = top + section.offsetHeight;
-                let scroll = window.scrollY;
-                let id = section.getAttribute('id');
-                
-                if (scroll >= top && scroll < bottom) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === '#' + id) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        });
-
-        // Update active class on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            const currentPage = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
+    <script type="module" src="scene.js"></script>
 </body>
 </html>
